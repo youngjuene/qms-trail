@@ -1,0 +1,85 @@
+/* MiniMap Component Styles - Linear "Indigo & Volt" Theme */
+
+.minimap-container {
+  /* Positioning */
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
+
+  /* Sizing - default state */
+  width: 160px;
+  height: 160px;
+
+  /* Visual style */
+  background: rgba(50, 50, 54, 0.85); /* var(--color-bg-elevated) with 85% opacity */
+  border: 1px solid var(--color-border-medium);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(8px);
+
+  /* Smooth transitions */
+  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Interaction */
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Hover state - expansion */
+.minimap-container.hovered {
+  width: 180px;
+  height: 180px;
+  background: rgba(50, 50, 54, 1.0); /* Full opacity on hover */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8); /* Enhanced shadow */
+}
+
+/* Canvas element */
+.minimap-canvas {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-md);
+  display: block;
+}
+
+/* Viewport indicator - positioned absolutely over canvas */
+.minimap-viewport {
+  pointer-events: none;
+  transition: all 100ms ease-out;
+}
+
+/* Accessibility - focus state for keyboard navigation (future enhancement) */
+.minimap-container:focus-visible {
+  outline: 2px solid var(--color-volt);
+  outline-offset: 2px;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .minimap-container {
+    width: 120px;
+    height: 120px;
+    bottom: 16px;
+    right: 16px;
+  }
+
+  .minimap-container.hovered {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+/* High DPI display optimization */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .minimap-canvas {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Print styles - hide minimap when printing */
+@media print {
+  .minimap-container {
+    display: none;
+  }
+}

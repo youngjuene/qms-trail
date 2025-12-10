@@ -1,0 +1,76 @@
+.video-player {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  overflow: hidden;
+}
+
+.video-player__video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.video-player__error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: #1a1a1a;
+  color: #ff4444;
+  padding: 2rem;
+  text-align: center;
+}
+
+.video-player__error p {
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* Custom play button overlay (when controls are disabled) */
+.video-player__play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px;
+  height: 64px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border: 3px solid rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.video-player__play-button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  border-color: #fff;
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.video-player__play-button:active {
+  transform: translate(-50%, -50%) scale(0.95);
+}
+
+.video-player__play-button svg {
+  width: 32px;
+  height: 32px;
+}
+
+/* Hide play button when video is playing (for custom controls) */
+.video-player__video:not([controls]) ~ .video-player__play-button {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.video-player:hover .video-player__play-button {
+  opacity: 1;
+}

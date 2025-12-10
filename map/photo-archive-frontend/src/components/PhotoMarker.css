@@ -1,0 +1,201 @@
+/* PhotoMarker Component Styles */
+
+/* Marker Icon Container */
+.photo-marker-container {
+  background: transparent;
+  border: none;
+}
+
+.photo-marker-icon {
+  width: 32px;
+  height: 32px;
+  color: var(--color-map-primary, #5E6AD2);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  transition: all 0.2s ease;
+}
+
+.photo-marker-container:hover .photo-marker-icon {
+  color: var(--color-selected-highlight, #EC4899);
+  transform: scale(1.1);
+}
+
+/* Popup Container */
+.photo-marker-popup {
+  font-family: inherit;
+}
+
+.photo-marker-popup .leaflet-popup-content-wrapper {
+  background: var(--color-bg-primary, #1A1A1D);
+  border: 1px solid var(--color-border-primary, #2A2A2F);
+  border-radius: 12px;
+  padding: 0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.photo-marker-popup .leaflet-popup-content {
+  margin: 0;
+  width: 300px !important;
+}
+
+.photo-marker-popup .leaflet-popup-tip {
+  background: var(--color-bg-primary, #1A1A1D);
+  border: 1px solid var(--color-border-primary, #2A2A2F);
+  border-top: none;
+  border-right: none;
+}
+
+.photo-marker-popup .leaflet-popup-close-button {
+  color: var(--color-text-secondary, #8E8E93);
+  font-size: 24px;
+  font-weight: 600;
+  padding: 0.5rem;
+  width: 32px;
+  height: 32px;
+  top: 8px;
+  right: 8px;
+}
+
+.photo-marker-popup .leaflet-popup-close-button:hover {
+  color: var(--color-text-primary, #F5F5F7);
+}
+
+/* Popup Content */
+.photo-popup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Image Container */
+.photo-popup__image-container {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 12px 12px 0 0;
+  background: var(--color-bg-secondary, #25252A);
+}
+
+.photo-popup__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Info Section */
+.photo-popup__info {
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.photo-popup__filename {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-primary, #F5F5F7);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.photo-popup__date {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary, #8E8E93);
+}
+
+.photo-popup__coordinates {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.photo-popup__coord {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary, #8E8E93);
+  font-family: 'Monaco', 'Courier New', monospace;
+}
+
+/* Actions Section */
+.photo-popup__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0 1rem 1rem 1rem;
+}
+
+.photo-popup__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.photo-popup__button--view {
+  background: var(--color-map-primary, #5E6AD2);
+  color: #FFFFFF;
+}
+
+.photo-popup__button--view:hover {
+  background: var(--color-map-primary-hover, #4F5BC4);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(94, 106, 210, 0.3);
+}
+
+.photo-popup__button--delete {
+  background: var(--color-bg-hover, #2A2A2F);
+  color: #FCA5A5;
+  border: 1px solid rgba(220, 38, 38, 0.3);
+}
+
+.photo-popup__button--delete:hover {
+  background: rgba(220, 38, 38, 0.1);
+  border-color: rgba(220, 38, 38, 0.5);
+}
+
+.photo-popup__button-icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* Hint Text */
+.photo-popup__hint {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary, #8E8E93);
+  text-align: center;
+  background: var(--color-bg-secondary, #25252A);
+  border-radius: 0 0 12px 12px;
+  border-top: 1px solid var(--color-border-secondary, #52525B);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .photo-marker-popup .leaflet-popup-content {
+    width: 260px !important;
+  }
+
+  .photo-popup__image-container {
+    height: 160px;
+  }
+
+  .photo-popup__filename {
+    font-size: 0.9375rem;
+  }
+
+  .photo-popup__button {
+    padding: 0.625rem 0.875rem;
+    font-size: 0.875rem;
+  }
+}

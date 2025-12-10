@@ -1,0 +1,130 @@
+.progress-bar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+}
+
+.progress-bar-track {
+  height: 4px;
+  background: rgba(94, 106, 210, 0.1);
+  overflow: hidden;
+  transition: height 0.2s ease;
+  position: relative;
+}
+
+.progress-bar-container:hover .progress-bar-track {
+  height: 6px;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: var(--color-map-primary, #5E6AD2);
+  transition: width 0.3s ease-out;
+  border-radius: 0 2px 2px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Stage-specific styling */
+.stage-snapping {
+  background: linear-gradient(90deg,
+    var(--color-map-primary, #5E6AD2) 0%,
+    #7C3AED 50%,
+    var(--color-map-primary, #5E6AD2) 100%
+  );
+  background-size: 200% 100%;
+  animation: progressShimmer 2s ease-in-out infinite;
+}
+
+.stage-computing {
+  background: var(--color-map-primary, #5E6AD2);
+}
+
+.stage-complete {
+  background: #10B981; /* Success green */
+  animation: completePulse 0.5s ease-out;
+}
+
+@keyframes progressShimmer {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes completePulse {
+  0% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.progress-bar-message {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.progress-bar-text {
+  color: var(--color-text-secondary, #52525B);
+}
+
+.progress-bar-percent {
+  color: var(--color-text-primary, #27272A);
+  font-variant-numeric: tabular-nums;
+  min-width: 40px;
+  text-align: right;
+}
+
+/* Fade in/out animations */
+.progress-bar-container {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .progress-bar-fill,
+  .progress-bar-container {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Dark mode support (if needed) */
+@media (prefers-color-scheme: dark) {
+  .progress-bar-container {
+    background: rgba(24, 24, 27, 0.98);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .progress-bar-track {
+    background: rgba(82, 82, 91, 0.2);
+  }
+}

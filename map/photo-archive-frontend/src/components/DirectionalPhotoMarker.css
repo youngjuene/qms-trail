@@ -1,0 +1,234 @@
+/* DirectionalPhotoMarker Component Styles */
+
+/* Marker Container */
+.directional-marker-wrapper {
+  background: transparent !important;
+  border: none !important;
+}
+
+.directional-marker-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.1s ease;
+  cursor: grab;
+}
+
+.directional-marker-container:active {
+  cursor: grabbing;
+}
+
+.directional-marker-container.selected {
+  filter: drop-shadow(0 0 8px rgba(236, 72, 153, 0.6));
+}
+
+/* Camera Icon */
+.directional-camera-icon {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  transition: filter 0.2s ease;
+}
+
+.directional-marker-container:hover .directional-camera-icon {
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.4));
+}
+
+/* Direction Arrow Indicator */
+.direction-arrow {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 10px solid currentColor;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+}
+
+/* Photo Popup Styles */
+.photo-popup {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.photo-popup .leaflet-popup-content-wrapper {
+  background: var(--color-bg-primary, #1A1A1D);
+  border: 1px solid var(--color-border-primary, #2A2A2F);
+  border-radius: 12px;
+  padding: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.photo-popup .leaflet-popup-content {
+  margin: 0;
+  width: 280px !important;
+}
+
+.photo-popup .leaflet-popup-tip {
+  background: var(--color-bg-primary, #1A1A1D);
+  border: 1px solid var(--color-border-primary, #2A2A2F);
+  border-top: none;
+  border-right: none;
+}
+
+/* Popup Content */
+.photo-popup__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.photo-popup__image {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px 12px 0 0;
+  display: block;
+  background: var(--color-bg-secondary, #25252A);
+}
+
+.photo-popup__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0 1rem;
+}
+
+.photo-popup__filename {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-primary, #F5F5F7);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.photo-popup__date,
+.photo-popup__camera,
+.photo-popup__direction,
+.photo-popup__fov,
+.photo-popup__coordinates {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary, #8E8E93);
+  line-height: 1.4;
+}
+
+.photo-popup__coordinates {
+  font-family: 'Monaco', 'Courier New', monospace;
+  font-size: 0.8125rem;
+}
+
+.photo-popup__direction {
+  color: var(--color-map-primary, #5E6AD2);
+  font-weight: 500;
+}
+
+.photo-popup__fov {
+  color: var(--color-explore-route, #EC4899);
+  font-weight: 500;
+}
+
+/* Action Buttons */
+.photo-popup__actions {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0 1rem;
+}
+
+.photo-popup__button {
+  flex: 1;
+  padding: 0.625rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.photo-popup__button--view {
+  background: var(--color-map-primary, #5E6AD2);
+  color: white;
+}
+
+.photo-popup__button--view:hover {
+  background: #4E5AC2;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(94, 106, 210, 0.3);
+}
+
+.photo-popup__button--delete {
+  background: rgba(220, 38, 38, 0.1);
+  color: #FCA5A5;
+  border: 1px solid rgba(220, 38, 38, 0.3);
+}
+
+.photo-popup__button--delete:hover {
+  background: rgba(220, 38, 38, 0.2);
+  color: #DC2626;
+  border-color: rgba(220, 38, 38, 0.5);
+}
+
+/* Rotation Hint */
+.photo-popup__hint {
+  margin: 0;
+  padding: 0.75rem 1rem 1rem 1rem;
+  font-size: 0.75rem;
+  color: var(--color-text-tertiary, #6E6E73);
+  text-align: center;
+  font-style: italic;
+  border-top: 1px solid var(--color-border-secondary, #52525B);
+}
+
+/* FOV Polygon Hover Effect */
+.leaflet-interactive[fill="#5E6AD2"],
+.leaflet-interactive[fill="#EC4899"] {
+  transition: fill-opacity 0.2s ease;
+}
+
+.leaflet-interactive[fill="#5E6AD2"]:hover,
+.leaflet-interactive[fill="#EC4899"]:hover {
+  fill-opacity: 0.25 !important;
+  cursor: pointer;
+}
+
+/* Rotating State */
+.directional-marker-container.rotating {
+  cursor: crosshair !important;
+  filter: brightness(1.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .photo-popup .leaflet-popup-content {
+    width: 240px !important;
+  }
+
+  .photo-popup__image {
+    height: 140px;
+  }
+
+  .photo-popup__filename {
+    font-size: 0.9375rem;
+  }
+
+  .photo-popup__date,
+  .photo-popup__camera,
+  .photo-popup__direction,
+  .photo-popup__fov,
+  .photo-popup__coordinates {
+    font-size: 0.8125rem;
+  }
+
+  .photo-popup__button {
+    padding: 0.5rem;
+    font-size: 0.8125rem;
+  }
+}

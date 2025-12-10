@@ -1,0 +1,157 @@
+/* BasemapSwitcher Component Styles */
+
+.basemap-switcher {
+  position: relative;
+  display: inline-block;
+}
+
+.basemap-switcher__toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background-color: var(--color-bg-elevated, #ffffff);
+  border: 1px solid var(--color-border-medium, #e0e0e0);
+  border-radius: var(--radius-md, 6px);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-text-primary, #2c3e50);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.basemap-switcher__toggle:hover {
+  background-color: var(--color-bg-hover, #f5f5f5);
+  border-color: var(--color-border-dark, #ccc);
+}
+
+.basemap-switcher.expanded .basemap-switcher__toggle {
+  background-color: var(--color-primary, #3498db);
+  color: white;
+  border-color: var(--color-primary, #3498db);
+}
+
+.basemap-switcher__icon {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.basemap-switcher__text {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.basemap-switcher__arrow {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s ease;
+}
+
+.basemap-switcher.expanded .basemap-switcher__arrow {
+  transform: rotate(180deg);
+}
+
+/* Dropdown Menu */
+.basemap-switcher__dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  min-width: 160px;
+  background-color: var(--color-bg-elevated, #ffffff);
+  border: 1px solid var(--color-border-medium, #e0e0e0);
+  border-radius: var(--radius-md, 6px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  overflow: hidden;
+  animation: basemapDropdownSlide 0.2s ease;
+}
+
+@keyframes basemapDropdownSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.basemap-switcher__option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 14px;
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 0.9rem;
+  color: var(--color-text-primary, #2c3e50);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  position: relative;
+}
+
+.basemap-switcher__option:not(:last-child) {
+  border-bottom: 1px solid var(--color-border-light, #f0f0f0);
+}
+
+.basemap-switcher__option:hover {
+  background-color: var(--color-bg-hover, #f5f5f5);
+}
+
+.basemap-switcher__option.active {
+  background-color: var(--color-primary-light, #e3f2fd);
+  color: var(--color-primary, #3498db);
+  font-weight: 600;
+}
+
+.basemap-switcher__option-icon {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.basemap-switcher__option-text {
+  flex: 1;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.basemap-switcher__check {
+  width: 18px;
+  height: 18px;
+  color: var(--color-primary, #3498db);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .basemap-switcher__text {
+    display: none;
+  }
+
+  .basemap-switcher__toggle {
+    padding: 8px 10px;
+    gap: 4px;
+  }
+
+  .basemap-switcher__arrow {
+    width: 14px;
+    height: 14px;
+  }
+
+  .basemap-switcher__dropdown {
+    min-width: 140px;
+  }
+
+  .basemap-switcher__option {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Integration with header controls */
+.app-header__controls .basemap-switcher {
+  margin-left: 8px;
+}

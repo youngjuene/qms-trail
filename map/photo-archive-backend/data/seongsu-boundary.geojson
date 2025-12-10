@@ -1,0 +1,25 @@
+{
+  "type": "FeatureCollection",
+  "features": [{
+    "type": "Feature",
+    "properties": {
+      "name": "Seongsu-dong",
+      "name_kr": "성수동",
+      "district": "Seongdong-gu",
+      "district_kr": "성동구",
+      "city": "Seoul",
+      "area_sqkm": 5.48,
+      "description": "Trendy neighborhood known for cafes, galleries, and creative spaces"
+    },
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [[
+        [127.0390, 37.5470],
+        [127.0590, 37.5470],
+        [127.0590, 37.5370],
+        [127.0390, 37.5370],
+        [127.0390, 37.5470]
+      ]]
+    }
+  }]
+}

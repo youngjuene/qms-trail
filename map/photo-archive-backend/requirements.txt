@@ -1,0 +1,22 @@
+# Photo Archive Backend Dependencies
+
+# Web Framework
+fastapi==0.115.4
+uvicorn[standard]==0.32.0
+python-multipart==0.0.12  # For file upload handling
+
+# Database
+sqlalchemy==2.0.35
+geoalchemy2==0.15.2
+psycopg2-binary==2.9.9
+alembic==1.13.3
+
+# Image Processing
+Pillow==11.0.0  # For thumbnail generation
+
+# Data Validation
+pydantic==2.9.2
+pydantic-settings==2.5.2
+
+# Utilities
+python-dotenv==1.0.1
